@@ -3,7 +3,8 @@ package co.com.ceiba.parqueadero.paola.modelo.unitarias;
 import org.junit.Test;
 
 import co.com.ceiba.parqueadero.paola.basetest.BaseTest;
-import co.com.ceiba.parqueadero.paola.dominio.excepcion.ExcepcionValidarPlaca;
+import co.com.ceiba.parqueadero.paola.dominio.constantes.Constantes;
+import co.com.ceiba.parqueadero.paola.dominio.excepcion.*;
 import co.com.ceiba.parquedero.paola.testdatabuilder.ParqueaderoTestDataBuilder;
 
 public class ParqueaderoTest {
@@ -14,7 +15,7 @@ public class ParqueaderoTest {
 		ParqueaderoTestDataBuilder parqueaderoTestDataBuilder = new ParqueaderoTestDataBuilder();
 		parqueaderoTestDataBuilder.placa(null);
 		//Act - Assert
-		BaseTest.assertThrows(() -> parqueaderoTestDataBuilder.build(),ExcepcionValidarPlaca.class,"La placa no puede ser nula.");
+		BaseTest.assertThrows(() -> parqueaderoTestDataBuilder.build(),ExcepcionValidarPlaca.class,Constantes.MENSAJE_PLACA_NULA);
 	}
 	
 	@Test
@@ -23,7 +24,7 @@ public class ParqueaderoTest {
 		ParqueaderoTestDataBuilder parqueaderoTestDataBuilder = new ParqueaderoTestDataBuilder();
 		parqueaderoTestDataBuilder.tipoVehiculo(null);
 		//Act - Assert
-		BaseTest.assertThrows(() -> parqueaderoTestDataBuilder.build(),ExcepcionValidarPlaca.class,"El tipo de vehiculo no puede ser nulo.");
+		BaseTest.assertThrows(() -> parqueaderoTestDataBuilder.build(),ExcepcionTipoVehiculoNulo.class,Constantes.MENSAJE_TIPO_VEHICULO_NULO);
 	}
 	
 	@Test
@@ -32,17 +33,18 @@ public class ParqueaderoTest {
 		ParqueaderoTestDataBuilder parqueaderoTestDataBuilder = new ParqueaderoTestDataBuilder();
 		parqueaderoTestDataBuilder.tipoVehiculo("CARR");
 		//Act - Assert
-		BaseTest.assertThrows(() -> parqueaderoTestDataBuilder.build(),ExcepcionValidarPlaca.class,"El tipo de vehiculo debe ser CARRO o MOTO");
+		BaseTest.assertThrows(() -> parqueaderoTestDataBuilder.build(),ExcepcionTipoVehiculo.class,Constantes.MENSAJE_TIPO_VEHICULO_INCORRECTO);
 	}
 	
 	@Test
 	public void validarCilindrajeObligatorio() {
 		//Arrange
 		ParqueaderoTestDataBuilder parqueaderoTestDataBuilder = new ParqueaderoTestDataBuilder();
+		parqueaderoTestDataBuilder.placa("HIL01E");
 		parqueaderoTestDataBuilder.tipoVehiculo("MOTO");
 		parqueaderoTestDataBuilder.cilindraje(0);
 		//Act - Assert
-		BaseTest.assertThrows(() -> parqueaderoTestDataBuilder.build(),ExcepcionValidarPlaca.class,"Si el tipo de vehiculo es moto debe ingresar el cilindraje");
+		BaseTest.assertThrows(() -> parqueaderoTestDataBuilder.build(),ExcepcionCilindrajeObligatorio.class,Constantes.MENSAJE_CILINDRAJE_NO_NULO);
 	}
 	
 }
