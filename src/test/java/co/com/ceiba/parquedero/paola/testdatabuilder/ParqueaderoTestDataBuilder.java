@@ -2,6 +2,7 @@ package co.com.ceiba.parquedero.paola.testdatabuilder;
 
 import java.util.Date;
 
+import co.com.ceiba.parqueadero.paola.dominio.constantes.Constantes;
 import co.com.ceiba.parqueadero.paola.dominio.modelo.Parqueadero;
 
 public class ParqueaderoTestDataBuilder {
@@ -14,7 +15,15 @@ public class ParqueaderoTestDataBuilder {
 	private Date fechaSalida;
 	private double total;
 	
-	public ParqueaderoTestDataBuilder(){
+	
+    public ParqueaderoTestDataBuilder(){
+        this.id = 1L;
+        this.tipoVehiculo = Constantes.TIPO_VEHICULO_CARRO;
+        this.placa = "DXR423";
+        this.cilindraje = "0";
+        this.fechaIngreso = null;
+        this.fechaSalida = null;
+        this.total = 0;
     }
 	
 	public ParqueaderoTestDataBuilder id(Long id) {

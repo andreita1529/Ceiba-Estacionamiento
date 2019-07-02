@@ -18,9 +18,7 @@ public class Parqueadero {
 		ValidadorParqueadero.validarDatoObligatorio(placa, Constantes.MENSAJE_PLACA_NULA);
 		ValidadorParqueadero.validarDatoObligatorio(tipoVehiculo, Constantes.MENSAJE_TIPO_VEHICULO_NULO);
 		
-		if(!tipoVehiculo.equalsIgnoreCase(Constantes.TIPO_VEHICULO_CARRO) && !tipoVehiculo.equalsIgnoreCase(Constantes.TIPO_VEHICULO_MOTO)) {
-			ValidadorParqueadero.validarTipoVehiculo(Constantes.MENSAJE_TIPO_VEHICULO_INCORRECTO);
-		}
+		ValidadorParqueadero.validarTipoVehiculo(tipoVehiculo, Constantes.MENSAJE_TIPO_VEHICULO_INCORRECTO);
 		
 		if(tipoVehiculo.equalsIgnoreCase(Constantes.TIPO_VEHICULO_MOTO)) {
 			ValidadorParqueadero.validarDatoObligatorio(cilindraje, Constantes.MENSAJE_CILINDRAJE_NO_NULO);

@@ -15,8 +15,10 @@ public class ValidadorParqueadero {
         }
     }
     
-    public static void validarTipoVehiculo(String mensaje) {
-        throw new ExcepcionTipoVehiculo(mensaje);
+    public static void validarTipoVehiculo(Object dato, String mensaje) {
+	    if(!dato.equals(Constantes.TIPO_VEHICULO_CARRO) && !dato.equals(Constantes.TIPO_VEHICULO_MOTO)) {
+	        throw new ExcepcionTipoVehiculo(mensaje);
+	    }
     }
 
 }
