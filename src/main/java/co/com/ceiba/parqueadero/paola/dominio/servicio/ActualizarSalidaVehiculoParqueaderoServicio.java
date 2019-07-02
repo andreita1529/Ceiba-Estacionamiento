@@ -20,6 +20,7 @@ public class ActualizarSalidaVehiculoParqueaderoServicio {
 	public double actualizar(String placa){
 		ValidadorParqueadero.validarDatoObligatorio(placa, Constantes.MENSAJE_PLACA_NULA);
 		Parqueadero parqueadero = validarRegistro(placa);
+		parqueadero.setEstado(false);
 		parqueadero.setFechaSalida(Calendar.getInstance().getTime());
 		parqueadero.setTotal(calcularPrecio(parqueadero));
         this.parqueaderoRepositorio.actualizarSalidaVehiculo(parqueadero);

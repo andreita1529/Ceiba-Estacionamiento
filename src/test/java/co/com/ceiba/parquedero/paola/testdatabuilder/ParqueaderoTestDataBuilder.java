@@ -13,6 +13,7 @@ public class ParqueaderoTestDataBuilder {
 	private String cilindraje;
 	private Date fechaIngreso;
 	private Date fechaSalida;
+	private boolean estado;
 	private double total;
 	
 	
@@ -23,6 +24,7 @@ public class ParqueaderoTestDataBuilder {
         this.cilindraje = "0";
         this.fechaIngreso = null;
         this.fechaSalida = null;
+        this.estado = true;
         this.total = 0;
     }
 	
@@ -58,6 +60,10 @@ public class ParqueaderoTestDataBuilder {
     public ParqueaderoTestDataBuilder total(long total) {
         this.total = total;
         return this;
+    }    
+    public ParqueaderoTestDataBuilder estado(boolean estado) {
+        this.estado = estado;
+        return this;
     }
 
     public Parqueadero build(){
@@ -68,6 +74,7 @@ public class ParqueaderoTestDataBuilder {
     	parqueadero.setCilindraje(this.cilindraje);
     	parqueadero.setFechaIngreso(this.fechaIngreso);
     	parqueadero.setFechaSalida(this.fechaSalida);
+    	parqueadero.setEstado(this.estado);
     	parqueadero.setTotal(this.total);
         return parqueadero;
     }

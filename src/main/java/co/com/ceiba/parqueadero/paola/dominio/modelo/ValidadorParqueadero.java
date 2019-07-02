@@ -4,7 +4,7 @@ import co.com.ceiba.parqueadero.paola.dominio.constantes.Constantes;
 import co.com.ceiba.parqueadero.paola.dominio.excepcion.ExcepcionTipoVehiculo;
 import co.com.ceiba.parqueadero.paola.dominio.excepcion.ExcepcionObligatorio;
 
-public class ValidadorParqueadero {
+public final class ValidadorParqueadero {
 
 	private ValidadorParqueadero() {
 	}

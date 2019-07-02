@@ -54,7 +54,7 @@ public class ServicioCrearParqueaderoTest {
 				.tipoVehiculo(Constantes.TIPO_VEHICULO_MOTO).fechaIngreso(hoy);
 		this.parqueadero = this.parqueaderoDataBuilder.build();
 		this.parqueaderoDataBuilder = new ParqueaderoTestDataBuilder().placa(PLACA_MOTO).cilindraje(CILINDRAJE)
-				.tipoVehiculo(Constantes.TIPO_VEHICULO_MOTO).fechaIngreso(hoy).total(0);
+				.tipoVehiculo(Constantes.TIPO_VEHICULO_MOTO).fechaIngreso(hoy).total(0).estado(true);
 		Parqueadero parqueaderoEntrada = this.parqueaderoDataBuilder.build();
 		when(this.parqueaderoRepositorio.crearVehiculo(this.parqueadero)).thenReturn(parqueaderoEntrada);
 		this.servicio = new CrearVehiculoParqueaderoServicio(this.parqueaderoRepositorio);
@@ -71,7 +71,7 @@ public class ServicioCrearParqueaderoTest {
 				.tipoVehiculo(Constantes.TIPO_VEHICULO_CARRO).fechaIngreso(hoy);
 		this.parqueadero = this.parqueaderoDataBuilder.build();
 		this.parqueaderoDataBuilder = new ParqueaderoTestDataBuilder().placa(PLACA_CARRO)
-				.tipoVehiculo(Constantes.TIPO_VEHICULO_CARRO).fechaIngreso(hoy).total(0);
+				.tipoVehiculo(Constantes.TIPO_VEHICULO_CARRO).fechaIngreso(hoy).total(0).estado(true);
 		Parqueadero parqueaderoEntrada = this.parqueaderoDataBuilder.build();
 		when(this.parqueaderoRepositorio.crearVehiculo(this.parqueadero)).thenReturn(parqueaderoEntrada);
 		this.servicio = new CrearVehiculoParqueaderoServicio(this.parqueaderoRepositorio);

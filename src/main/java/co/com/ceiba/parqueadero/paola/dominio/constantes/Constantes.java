@@ -7,6 +7,8 @@ public final class Constantes {
 	public static final String TIPO_VEHICULO_CARRO  = "CARRO";
 	public static final String TIPO_VEHICULO_MOTO  = "MOTO";
 	public static final String VACIO  = "";
+	public static final String PLACA_CARRO  = "DXR423";
+	public static final String PLACA_MOTO  = "HIL01E";
 	
 	public static final int CANTIDAD_MAXIMA_MOTOS = 10;
 	public static final int CANTIDAD_MAXIMA_CARROS = 20;

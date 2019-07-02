@@ -5,11 +5,10 @@ import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
-import co.com.ceiba.parqueadero.paola.basetest.BaseTest;
 import co.com.ceiba.parqueadero.paola.dominio.constantes.Constantes;
-import co.com.ceiba.parqueadero.paola.dominio.excepcion.*;
+import co.com.ceiba.parqueadero.paola.dominio.excepcion.ExcepcionObligatorio;
+import co.com.ceiba.parqueadero.paola.dominio.excepcion.ExcepcionTipoVehiculo;
 import co.com.ceiba.parqueadero.paola.dominio.modelo.ValidadorParqueadero;
-import co.com.ceiba.parquedero.paola.testdatabuilder.ParqueaderoTestDataBuilder;
 
 public class ParqueaderoTest {
 	
@@ -51,5 +50,4 @@ public class ParqueaderoTest {
 			assertEquals(e.getMessage(), Constantes.MENSAJE_TIPO_VEHICULO_INCORRECTO);
 		}		
 	}
-	
 }
