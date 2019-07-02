@@ -5,11 +5,11 @@ import java.util.List;
 import co.com.ceiba.parqueadero.paola.dominio.modelo.Parqueadero;
 import co.com.ceiba.parqueadero.paola.dominio.puerto.repositorio.IParqueaderoRepositorio;
 
-public class BuscarVehiculoServicio {
+public class BuscarVehiculoParqueaderoServicio {
 
 private IParqueaderoRepositorio parqueaderoRepositorio;
 	
-	public BuscarVehiculoServicio(IParqueaderoRepositorio parqueaderoRepositorio){
+	public BuscarVehiculoParqueaderoServicio(IParqueaderoRepositorio parqueaderoRepositorio){
         this.parqueaderoRepositorio = parqueaderoRepositorio;
     }
 	

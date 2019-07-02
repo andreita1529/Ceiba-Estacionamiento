@@ -1,11 +1,11 @@
 package co.com.ceiba.parqueadero.paola.dominio.excepcion;
 
-public class ExcepcionCilindrajeObligatorio extends RuntimeException {
+public class ExcepcionObligatorio extends RuntimeException {
 
 	private static final long serialVersionUID = -1775402230956286492L;
 
-	public ExcepcionCilindrajeObligatorio(String mensaje) {
+	public ExcepcionObligatorio(String mensaje) {
         super(mensaje);
     }
-
 }
+

@@ -1,11 +1,11 @@
 package co.com.ceiba.parqueadero.paola.dominio.excepcion;
 
-public class ExcepcionValidarPlaca extends RuntimeException {
+public class ExcepcionNoExisteVehiculo extends RuntimeException {
 
 	private static final long serialVersionUID = -1775402230956286492L;
 
-	public ExcepcionValidarPlaca(String mensaje) {
+	public ExcepcionNoExisteVehiculo(String mensaje) {
         super(mensaje);
     }
-}
 
+}

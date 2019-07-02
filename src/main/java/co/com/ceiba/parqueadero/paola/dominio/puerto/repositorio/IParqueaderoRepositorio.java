@@ -10,27 +10,27 @@ public interface IParqueaderoRepositorio {
      * Se registra el vehiculo en el parqueadero
      * @param Parqueadero
      */
-	void crearVehiculo(Parqueadero parqueadero);
+	public Parqueadero crearVehiculo(Parqueadero parqueadero);
 	
 	/**
-     * Actualizar los datos de un vehiculo
+     * Actualizar los datos de un vehiculo cuando va a salir
      * @param  Parqueadero
      */
-	void actualizarVehiculo(Parqueadero parqueadero);
+	public boolean actualizarSalidaVehiculo(Parqueadero parqueadero);
 	
 	/**
      * Indica si hay cupos disponibles por tipo de vehiculo
      * @param tipoVehiculo
      * @return cantidad de vehiculos por tipo
      */
-	int cuposPorTipoVehiculo(String tipoVehiculo);
+	public int cuposPorTipoVehiculo(String tipoVehiculo);
 		
 	/**
      * Indica si el vehiculo ya ha sido registrado
      * @param Parqueadero
      * @return existe
      */
-	boolean existeVehiculo(Parqueadero parqueadero);
+	boolean existeVehiculo(String placa);
 	
 	/**
      * Lista los vehiculos registrados
@@ -38,4 +38,12 @@ public interface IParqueaderoRepositorio {
      * @return
      */
 	List<Parqueadero> buscarRegistroVehiculos();
+	
+	/**
+	 * Método que retorna un vehiculo del parqueadero que aun no ha salido
+	 * 
+	 * @param placa de vehiculo a verificar
+	 * @return 
+	 */
+	public Parqueadero salida(String placa);
 }

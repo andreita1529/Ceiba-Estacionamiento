@@ -2,7 +2,6 @@ package co.com.ceiba.parquedero.paola.testdatabuilder;
 
 import java.util.Date;
 
-import co.com.ceiba.parqueadero.paola.dominio.constantes.Constantes;
 import co.com.ceiba.parqueadero.paola.dominio.modelo.Parqueadero;
 
 public class ParqueaderoTestDataBuilder {
@@ -10,19 +9,12 @@ public class ParqueaderoTestDataBuilder {
 	private Long id;
 	private String placa;
 	private String tipoVehiculo;
-	private int cilindraje;
+	private String cilindraje;
 	private Date fechaIngreso;
 	private Date fechaSalida;
 	private double total;
 	
 	public ParqueaderoTestDataBuilder(){
-        this.id = 1L;
-        this.tipoVehiculo = Constantes.TIPO_VEHICULO_CARRO;
-        this.placa = "DXR423";
-        this.cilindraje = 0;
-        this.fechaIngreso = null;
-        this.fechaSalida = null;
-        this.total = 0;
     }
 	
 	public ParqueaderoTestDataBuilder id(Long id) {
@@ -40,7 +32,7 @@ public class ParqueaderoTestDataBuilder {
         return this;
     }
 
-    public ParqueaderoTestDataBuilder cilindraje(int cilindraje) {
+    public ParqueaderoTestDataBuilder cilindraje(String cilindraje) {
         this.cilindraje = cilindraje;
         return this;
     }
@@ -60,6 +52,14 @@ public class ParqueaderoTestDataBuilder {
     }
 
     public Parqueadero build(){
-        return new Parqueadero(id, placa, tipoVehiculo, cilindraje, fechaIngreso, fechaSalida, total);
+    	Parqueadero parqueadero = new Parqueadero();
+    	parqueadero.setId(this.id);
+    	parqueadero.setPlaca(this.placa);
+    	parqueadero.setTipoVehiculo(this.tipoVehiculo);
+    	parqueadero.setCilindraje(this.cilindraje);
+    	parqueadero.setFechaIngreso(this.fechaIngreso);
+    	parqueadero.setFechaSalida(this.fechaSalida);
+    	parqueadero.setTotal(this.total);
+        return parqueadero;
     }
 }

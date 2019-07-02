@@ -15,7 +15,7 @@ public class ParqueaderoTest {
 		ParqueaderoTestDataBuilder parqueaderoTestDataBuilder = new ParqueaderoTestDataBuilder();
 		parqueaderoTestDataBuilder.placa(null);
 		//Act - Assert
-		BaseTest.assertThrows(() -> parqueaderoTestDataBuilder.build(),ExcepcionValidarPlaca.class,Constantes.MENSAJE_PLACA_NULA);
+		BaseTest.assertThrows(() -> parqueaderoTestDataBuilder.build(),ExcepcionObligatorio.class,Constantes.MENSAJE_PLACA_NULA);
 	}
 	
 	@Test
@@ -24,7 +24,7 @@ public class ParqueaderoTest {
 		ParqueaderoTestDataBuilder parqueaderoTestDataBuilder = new ParqueaderoTestDataBuilder();
 		parqueaderoTestDataBuilder.tipoVehiculo(null);
 		//Act - Assert
-		BaseTest.assertThrows(() -> parqueaderoTestDataBuilder.build(),ExcepcionTipoVehiculoNulo.class,Constantes.MENSAJE_TIPO_VEHICULO_NULO);
+		BaseTest.assertThrows(() -> parqueaderoTestDataBuilder.build(),ExcepcionObligatorio.class,Constantes.MENSAJE_TIPO_VEHICULO_NULO);
 	}
 	
 	@Test
@@ -42,9 +42,9 @@ public class ParqueaderoTest {
 		ParqueaderoTestDataBuilder parqueaderoTestDataBuilder = new ParqueaderoTestDataBuilder();
 		parqueaderoTestDataBuilder.placa("HIL01E");
 		parqueaderoTestDataBuilder.tipoVehiculo("MOTO");
-		parqueaderoTestDataBuilder.cilindraje(0);
+		parqueaderoTestDataBuilder.cilindraje("0");
 		//Act - Assert
-		BaseTest.assertThrows(() -> parqueaderoTestDataBuilder.build(),ExcepcionCilindrajeObligatorio.class,Constantes.MENSAJE_CILINDRAJE_NO_NULO);
+		BaseTest.assertThrows(() -> parqueaderoTestDataBuilder.build(),ExcepcionObligatorio.class,Constantes.MENSAJE_CILINDRAJE_NO_NULO);
 	}
 	
 }

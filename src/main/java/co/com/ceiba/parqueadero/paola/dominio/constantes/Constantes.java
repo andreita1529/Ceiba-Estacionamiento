@@ -6,6 +6,7 @@ public final class Constantes {
 	
 	public static final String TIPO_VEHICULO_CARRO  = "CARRO";
 	public static final String TIPO_VEHICULO_MOTO  = "MOTO";
+	public static final String VACIO  = "";
 	
 	public static final int CANTIDAD_MAXIMA_MOTOS = 10;
 	public static final int CANTIDAD_MAXIMA_CARROS = 20;
@@ -22,7 +23,8 @@ public final class Constantes {
 	
 	public static final int TOPE_MIN_HORAS_COBRO_POR_DIA = 9;
 	public static final int TOPE_MAX_HORAS_COBRO_POR_DIA = 24;
-	public static final int MINUTOS_POR_HORA = 60;	
+	public static final int MINUTOS_POR_HORA = 60;
+	public static final int CERO = 0;	
 	
 	public static final String MENSAJE_TIPO_VEHICULO_VALIDO = "El tipo de vehículo a ingresar es válido para este estacionamiento";
 	public static final String MENSAJE_TIPO_VEHICULO_NULO ="Debe ingresar un tipo de vehículo";
@@ -32,7 +34,8 @@ public final class Constantes {
 	public static final String MENSAJE_NO_SE_PUEDE_ACTUALIZAR = "No se puede actualizar el registro no existe";
 	public static final String MENSAJE_SOBRECUPO = "Actualmente no se cuenta con cupos disponibles para este vehículo";
 	public static final String MENSAJE_ACCESO_NO_AUTORIZADO_PLACA = "La placa tiene restriccion para el día de hoy. No es posible ingresar";
-	public static final String VEHICULO_YA_EXISTE_EN_PARQUEADERO = "Este Vehiculo ya se encuentra dentro del parqueadero. Por favor revisar";
+	public static final String VEHICULO_YA_EXISTE_EN_PARQUEADERO = "Este vehículo ya se encuentra dentro del parqueadero. Por favor revisar";
+	public static final String VEHICULO_NO_EXISTE_EN_PARQUEADERO = "Este vehículo no se encuentra dentro del parqueadero";
 
 	public static final int  MILISEGUNDOS_A_MINUTOS = 60000;
 

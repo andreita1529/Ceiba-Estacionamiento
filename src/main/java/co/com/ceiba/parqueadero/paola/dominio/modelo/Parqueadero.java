@@ -9,21 +9,21 @@ public class Parqueadero {
 	private Long id;
 	private String placa;
 	private String tipoVehiculo;
-	private int cilindraje;
+	private String cilindraje;
 	private Date fechaIngreso;
 	private Date fechaSalida;
 	private double total;
 	
-	public Parqueadero(Long id, String placa, String tipoVehiculo, int cilindraje, Date fechaIngreso, Date fechaSalida, double total) {
-		ValidadorParqueadero.validarPlacaNoNula(placa);
-		ValidadorParqueadero.validarTipoVehiculoNulo(tipoVehiculo);
+	public Parqueadero(Long id, String placa, String tipoVehiculo, String cilindraje, Date fechaIngreso, Date fechaSalida, double total) {
+		ValidadorParqueadero.validarDatoObligatorio(placa, Constantes.MENSAJE_PLACA_NULA);
+		ValidadorParqueadero.validarDatoObligatorio(tipoVehiculo, Constantes.MENSAJE_TIPO_VEHICULO_NULO);
 		
 		if(!tipoVehiculo.equalsIgnoreCase(Constantes.TIPO_VEHICULO_CARRO) && !tipoVehiculo.equalsIgnoreCase(Constantes.TIPO_VEHICULO_MOTO)) {
-			ValidadorParqueadero.validarTipoVehiculo();
+			ValidadorParqueadero.validarTipoVehiculo(Constantes.MENSAJE_TIPO_VEHICULO_INCORRECTO);
 		}
 		
 		if(tipoVehiculo.equalsIgnoreCase(Constantes.TIPO_VEHICULO_MOTO)) {
-			ValidadorParqueadero.validarCilindrajeObligatorio(cilindraje);
+			ValidadorParqueadero.validarDatoObligatorio(cilindraje, Constantes.MENSAJE_CILINDRAJE_NO_NULO);
 		}
 		
 		this.id = id;
@@ -33,6 +33,9 @@ public class Parqueadero {
 		this.fechaIngreso = fechaIngreso;
 		this.fechaSalida = fechaSalida;
 		this.total = total;
+	}
+	
+	public Parqueadero() {
 	}
 
 	public Long getId() {
@@ -59,11 +62,11 @@ public class Parqueadero {
 		this.tipoVehiculo = tipoVehiculo;
 	}
 
-	public int getCilindraje() {
+	public String getCilindraje() {
 		return cilindraje;
 	}
 
-	public void setCilindraje(int cilindraje) {
+	public void setCilindraje(String cilindraje) {
 		this.cilindraje = cilindraje;
 	}
 
