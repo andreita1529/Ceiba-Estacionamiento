@@ -23,12 +23,12 @@ public class ActualizarSalidaVehiculoParqueaderoServicio {
 		parqueadero.setEstado(false);
 		parqueadero.setFechaSalida(Calendar.getInstance().getTime());
 		parqueadero.setTotal(calcularPrecio(parqueadero));
-        this.parqueaderoRepositorio.actualizarSalidaVehiculo(parqueadero);
+        this.parqueaderoRepositorio.crearVehiculo(parqueadero);
         return parqueadero.getTotal();
     }
 	
 	private Parqueadero validarRegistro(String placa) {
-		Parqueadero parqueadero = this.parqueaderoRepositorio.salida(placa);
+		Parqueadero parqueadero = this.parqueaderoRepositorio.buscarPorPlaca(placa);
 		if (parqueadero == null) {
 			throw new ExcepcionNoExisteVehiculo(Constantes.VEHICULO_NO_EXISTE_EN_PARQUEADERO);
 		}
