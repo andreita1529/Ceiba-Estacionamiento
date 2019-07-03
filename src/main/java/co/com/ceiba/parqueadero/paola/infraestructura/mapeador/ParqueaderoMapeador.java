@@ -18,7 +18,7 @@ public class ParqueaderoMapeador {
             parqueadero = null;
         }
         else{
-            parqueadero = new Parqueadero(parqueaderoEntidad.getId(),parqueaderoEntidad.getTipoVehiculo(),parqueaderoEntidad.getPlaca()
+            parqueadero = new Parqueadero(parqueaderoEntidad.getId(), parqueaderoEntidad.getPlaca(), parqueaderoEntidad.getTipoVehiculo()
                     ,parqueaderoEntidad.getCilindraje(), parqueaderoEntidad.getFechaIngreso(), parqueaderoEntidad.getFechasalida()
                     ,parqueaderoEntidad.getValorTotal());
         }
@@ -31,7 +31,7 @@ public class ParqueaderoMapeador {
         if(parqueadero == null){
             parqueaderoEntidad = null;
         }else{
-            parqueaderoEntidad = new ParqueaderoEntidad(parqueadero.getId(),parqueadero.getTipoVehiculo(),parqueadero.getPlaca()
+            parqueaderoEntidad = new ParqueaderoEntidad(parqueadero.getId(),parqueadero.getPlaca(), parqueadero.getTipoVehiculo()
                                                 ,parqueadero.getCilindraje(),parqueadero.getFechaIngreso(),parqueadero.getFechaSalida(), parqueadero.getTotal());
         }
         
@@ -42,7 +42,7 @@ public class ParqueaderoMapeador {
         final List<Parqueadero> listParqueadero = new ArrayList<>();
 
         listaParqueaderoEntidad.forEach(parqueaderoEntidad -> listParqueadero.add(new Parqueadero(parqueaderoEntidad.getId()
-                ,parqueaderoEntidad.getTipoVehiculo(),parqueaderoEntidad.getPlaca()
+                ,parqueaderoEntidad.getPlaca(),parqueaderoEntidad.getTipoVehiculo()
                 ,parqueaderoEntidad.getCilindraje(),parqueaderoEntidad.getFechaIngreso(),parqueaderoEntidad.getFechasalida()
                 ,parqueaderoEntidad.getValorTotal())));
 

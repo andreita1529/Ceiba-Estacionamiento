@@ -15,8 +15,8 @@ public class EntradaVehiculoHandler {
     }
 
     public  void crear(ParqueaderoComando parqueaderoComando){
-        this.crearServicio.crear(new Parqueadero(parqueaderoComando.getId(), parqueaderoComando.getTipoVehiculo(), 
-        										 parqueaderoComando.getPlaca(),parqueaderoComando.getCilindraje(),
+        this.crearServicio.crear(new Parqueadero(parqueaderoComando.getId(), 
+        										 parqueaderoComando.getPlaca(),parqueaderoComando.getTipoVehiculo(),parqueaderoComando.getCilindraje(),
         										 new Date(),parqueaderoComando.getFechaSalida(),
         										 parqueaderoComando.getTotal()));
     }

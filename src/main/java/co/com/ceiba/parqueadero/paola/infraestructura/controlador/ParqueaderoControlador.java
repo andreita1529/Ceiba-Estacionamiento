@@ -20,7 +20,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/parqueadero")
-@CrossOrigin("http://localhost:4200")
+@CrossOrigin("*")
 public class ParqueaderoControlador {
 
 	private EntradaVehiculoHandler entradaVehiculoHandler;
