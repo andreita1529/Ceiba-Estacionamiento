@@ -28,7 +28,7 @@ public class ParqueaderoEntidad {
 
 	@Id
 	@TableGenerator(name = "numeroRegistro", initialValue = 1)
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO, generator  = "numeroRegistro")
 	private Long id;
 
 	@Column(nullable = false)
