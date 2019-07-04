@@ -1,43 +1,63 @@
 package co.com.ceiba.parqueadero.paola.dominio.servicio.unitarias;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
-import java.util.Calendar;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import co.com.ceiba.parqueadero.paola.dominio.constantes.Constantes;
 import co.com.ceiba.parqueadero.paola.dominio.modelo.Parqueadero;
+import co.com.ceiba.parqueadero.paola.dominio.puerto.repositorio.IParqueaderoRepositorio;
+import co.com.ceiba.parqueadero.paola.dominio.servicio.BuscarVehiculoParqueaderoServicio;
 import co.com.ceiba.parqueadero.paola.testdatabuilder.ParqueaderoTestDataBuilder;
 
 public class ServicioBuscarTest {
 	
-	private ParqueaderoTestDataBuilder parqueaderoDataBuilder;
-	private Parqueadero parqueadero;
-	private static final Date FECHA_INGRESO = Calendar.getInstance().getTime();
+	private IParqueaderoRepositorio parqueaderoRepositorio;
 
-	@Test
-	public void crearParqueaderoMoto() {
+	@Before
+	public void prepararDatos() {
 		// arrange
-		this.parqueaderoDataBuilder = new ParqueaderoTestDataBuilder().placa(Constantes.PLACA_MOTO)
-				.tipoVehiculo(Constantes.TIPO_VEHICULO_MOTO).cilindraje("200").fechaIngreso(FECHA_INGRESO);
-		// act
-		this.parqueadero = this.parqueaderoDataBuilder.build();
-		// assert
-		assertNotNull(parqueadero);
+		this.parqueaderoRepositorio = mock(IParqueaderoRepositorio.class);
 	}
 
+	@Test
+	public void listarParqueadero() {
+		//Arrange
+        ParqueaderoTestDataBuilder parqueaderoDataBuilder = new ParqueaderoTestDataBuilder()
+                .tipoVehiculo(Constantes.TIPO_VEHICULO_CARRO);
+        
+        Parqueadero parqueadero = parqueaderoDataBuilder.build();
+
+        BuscarVehiculoParqueaderoServicio listarServicio = new BuscarVehiculoParqueaderoServicio(parqueaderoRepositorio);
+        when(parqueaderoRepositorio.crearVehiculo(parqueadero)).thenReturn(parqueadero);
+        
+        List<Parqueadero> listaParqeuadero = listarServicio.buscar();
+        assertNotNull(listaParqeuadero);
+	}
 	
 	@Test
-	public void crearParqueaderoCarro() {
-		// arrange
-		this.parqueaderoDataBuilder = new ParqueaderoTestDataBuilder().placa(Constantes.PLACA_CARRO)
-				.tipoVehiculo(Constantes.TIPO_VEHICULO_CARRO).fechaIngreso(FECHA_INGRESO);
-		// act
-		this.parqueadero = this.parqueaderoDataBuilder.build();
-		// assert
-		assertNotNull(parqueadero);
+	public void listarParqueaderoVacio() {
+		
+		List<Parqueadero> vacio = new ArrayList<>();
+		//Arrange
+        ParqueaderoTestDataBuilder parqueaderoDataBuilder = new ParqueaderoTestDataBuilder()
+                .tipoVehiculo(Constantes.TIPO_VEHICULO_CARRO);
+        
+        Parqueadero parqueadero = parqueaderoDataBuilder.build();
+
+        BuscarVehiculoParqueaderoServicio listarServicio = new BuscarVehiculoParqueaderoServicio(parqueaderoRepositorio);
+        when(parqueaderoRepositorio.crearVehiculo(parqueadero)).thenReturn(null);
+        
+        List<Parqueadero> listaParqeuadero = listarServicio.buscar();
+        assertEquals(vacio,listaParqeuadero);
 	}
+
 
 }

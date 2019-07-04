@@ -55,12 +55,12 @@ public class ServicioActualizarParqueaderoTest {
 	@Test
     public void  validarHoraMoto() {
         //Arrange
-        double valueForHour = 500;
-        int hour = 7;
+        double valorPorHora = 500;
+        int hora = 7;
         Calendar fecha = Calendar.getInstance();
         fecha.setTime(new Date());
 
-        fecha.set(Calendar.HOUR, fecha.get(Calendar.HOUR) - hour);
+        fecha.set(Calendar.HOUR, fecha.get(Calendar.HOUR) - hora);
 
         ParqueaderoTestDataBuilder parqueaderoDataBuilder = new ParqueaderoTestDataBuilder()
                 .tipoVehiculo(Constantes.TIPO_VEHICULO_MOTO)
@@ -76,19 +76,19 @@ public class ServicioActualizarParqueaderoTest {
         salidaServicio.actualizar(parqueadero.getPlaca());
 
         //Assert
-        assertEquals((valueForHour * hour), parqueadero.getTotal(),0);
+        assertEquals((valorPorHora * hora), parqueadero.getTotal(),0);
 
     }
 	
 	@Test
     public void  validarHoraCarro() {
         //Arrange
-        double valueForHour = 1000;
-        int hour = 7;
+        double valorPorHora = 1000;
+        int hora = 7;
         Calendar fecha = Calendar.getInstance();
         fecha.setTime(new Date());
 
-        fecha.set(Calendar.HOUR, fecha.get(Calendar.HOUR) - hour);
+        fecha.set(Calendar.HOUR, fecha.get(Calendar.HOUR) - hora);
 
         ParqueaderoTestDataBuilder parqueaderoDataBuilder = new ParqueaderoTestDataBuilder()
                 .tipoVehiculo(Constantes.TIPO_VEHICULO_CARRO)
@@ -103,21 +103,21 @@ public class ServicioActualizarParqueaderoTest {
         salidaServicio.actualizar(parqueadero.getPlaca());
 
         //Assert
-        assertEquals((valueForHour * hour),parqueadero.getTotal(),0);
+        assertEquals((valorPorHora * hora),parqueadero.getTotal(),0);
 
     }
 	
 	@Test
     public void  validarAdicionalMoto() {
         //Arrange
-        double valueForHour = 500;
-        int hour = 7;
-        int valueAdictional = 2000;
+        double valorPorHora = 500;
+        int hora = 7;
+        int valorAdicional = 2000;
 
         Calendar fecha = Calendar.getInstance();
         fecha.setTime(new Date());
 
-        fecha.set(Calendar.HOUR, fecha.get(Calendar.HOUR) - hour);
+        fecha.set(Calendar.HOUR, fecha.get(Calendar.HOUR) - hora);
 
         ParqueaderoTestDataBuilder parqueaderoDataBuilder = new ParqueaderoTestDataBuilder()
         		.tipoVehiculo(Constantes.TIPO_VEHICULO_MOTO)
@@ -133,18 +133,18 @@ public class ServicioActualizarParqueaderoTest {
         salidaServicio.actualizar(parqueadero.getPlaca());
 
         //Assert
-        assertEquals((valueForHour * hour)+valueAdictional,parqueadero.getTotal(),0);
+        assertEquals((valorPorHora * hora)+valorAdicional,parqueadero.getTotal(),0);
     }
 	
 	@Test
     public void  validarDiaCarro() {
         //Arrange
-        double valueDay = 8000;
-        int hour = 9;
+        double valorDia = 8000;
+        int hora = 9;
         Calendar fecha = Calendar.getInstance();
         fecha.setTime(new Date());
 
-        fecha.set(Calendar.HOUR, fecha.get(Calendar.HOUR) - hour);
+        fecha.set(Calendar.HOUR, fecha.get(Calendar.HOUR) - hora);
 
         ParqueaderoTestDataBuilder parqueaderoDataBuilder = new ParqueaderoTestDataBuilder()
         		.tipoVehiculo(Constantes.TIPO_VEHICULO_CARRO)
@@ -159,21 +159,21 @@ public class ServicioActualizarParqueaderoTest {
         salidaServicio.actualizar(parqueadero.getPlaca());
 
         //Assert
-        assertEquals(valueDay,parqueadero.getTotal(),0);
+        assertEquals(valorDia,parqueadero.getTotal(),0);
 
     }
 	
 	@Test
     public void  validarDiaMotoCilindraje() {
         //Arrange
-        double valueDay = 4000;
-        int hour = 9;
-        int valueAdictional = 2000;
+        double valorDia = 4000;
+        int hora = 9;
+        int valorAdicional = 2000;
         
         Calendar fecha = Calendar.getInstance();
         fecha.setTime(new Date());
 
-        fecha.set(Calendar.HOUR, fecha.get(Calendar.HOUR) - hour);
+        fecha.set(Calendar.HOUR, fecha.get(Calendar.HOUR) - hora);
 
         ParqueaderoTestDataBuilder parqueaderoDataBuilder = new ParqueaderoTestDataBuilder()
         		.tipoVehiculo(Constantes.TIPO_VEHICULO_MOTO)
@@ -189,20 +189,20 @@ public class ServicioActualizarParqueaderoTest {
         salidaServicio.actualizar(parqueadero.getPlaca());
 
         //Assert
-        assertEquals(valueDay + valueAdictional,parqueadero.getTotal(),0);
+        assertEquals(valorDia + valorAdicional,parqueadero.getTotal(),0);
 
     }
 	
 	@Test
     public void  validarDiaMoto() {
         //Arrange
-        double valueDay = 4000;
-        int hour = 9;
+        double valorDia = 4000;
+        int hora = 9;
         
         Calendar fecha = Calendar.getInstance();
         fecha.setTime(new Date());
 
-        fecha.set(Calendar.HOUR, fecha.get(Calendar.HOUR) - hour);
+        fecha.set(Calendar.HOUR, fecha.get(Calendar.HOUR) - hora);
 
         ParqueaderoTestDataBuilder parqueaderoDataBuilder = new ParqueaderoTestDataBuilder()
         		.tipoVehiculo(Constantes.TIPO_VEHICULO_MOTO)
@@ -218,21 +218,21 @@ public class ServicioActualizarParqueaderoTest {
         salidaServicio.actualizar(parqueadero.getPlaca());
 
         //Assert
-        assertEquals(valueDay ,parqueadero.getTotal(),0);
+        assertEquals(valorDia ,parqueadero.getTotal(),0);
 
     }
 	
 	@Test
     public void  validarDiasCarro() {
         //Arrange
-        double valueDay = 8000;
-        double valueHour = 1000;
-        int hour = 26;
+        double valorDia = 8000;
+        double valorHora = 1000;
+        int hora = 26;
         
         Calendar fecha = Calendar.getInstance();
         fecha.setTime(new Date());
 
-        fecha.set(Calendar.HOUR, fecha.get(Calendar.HOUR) - hour);
+        fecha.set(Calendar.HOUR, fecha.get(Calendar.HOUR) - hora);
 
         ParqueaderoTestDataBuilder parqueaderoDataBuilder = new ParqueaderoTestDataBuilder()
         		.tipoVehiculo(Constantes.TIPO_VEHICULO_CARRO)
@@ -247,21 +247,21 @@ public class ServicioActualizarParqueaderoTest {
         salidaServicio.actualizar(parqueadero.getPlaca());
 
         //Assert
-        assertEquals((valueHour*2) + valueDay,parqueadero.getTotal(),0);
+        assertEquals((valorHora*2) + valorDia,parqueadero.getTotal(),0);
 
     }
 	
 	@Test
     public void  validarDiasMoto() {
         //Arrange
-        double valueDay = 4000;
-        double valueHour = 500;
-        int hour = 26;
+        double valorDia = 4000;
+        double valorHora = 500;
+        int hora = 26;
         
         Calendar fecha = Calendar.getInstance();
         fecha.setTime(new Date());
 
-        fecha.set(Calendar.HOUR, fecha.get(Calendar.HOUR) - hour);
+        fecha.set(Calendar.HOUR, fecha.get(Calendar.HOUR) - hora);
 
         ParqueaderoTestDataBuilder parqueaderoDataBuilder = new ParqueaderoTestDataBuilder()
         		.tipoVehiculo(Constantes.TIPO_VEHICULO_MOTO)
@@ -277,7 +277,7 @@ public class ServicioActualizarParqueaderoTest {
         salidaServicio.actualizar(parqueadero.getPlaca());
 
         //Assert
-        assertEquals((valueHour*2)+valueDay,parqueadero.getTotal(),0);
+        assertEquals((valorHora*2)+valorDia,parqueadero.getTotal(),0);
 
     }
 
