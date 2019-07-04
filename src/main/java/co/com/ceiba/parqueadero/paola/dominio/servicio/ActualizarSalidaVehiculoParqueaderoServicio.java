@@ -68,29 +68,29 @@ public class ActualizarSalidaVehiculoParqueaderoServicio {
         registry.setTotal(value);
     }
 	
-	public void calcularPrecioCarro(Parqueadero registry) {
-        long value;
-        double milisegund = (registry.getFechaSalida().getTime() - registry.getFechaIngreso().getTime());
-        double hour = (milisegund/3600000);
-        double minute = (milisegund/60000);
-        long totalHour = Math.round(hour);
-        long totalMinute = Math.round(minute);
-        int totalDay = (int)  totalHour / 24;
-        int  totalHourNewDay = (int) totalHour % 24;
+	public void calcularPrecioCarro(Parqueadero parqueadero) {
+        long total;
+        double miliseg = (parqueadero.getFechaSalida().getTime() - parqueadero.getFechaIngreso().getTime());
+        double horaCarro = (miliseg/3600000);
+        double minutosCarro = (miliseg/60000);
+        long totalHora = Math.round(horaCarro);
+        long totalMinutos = Math.round(minutosCarro);
+        int totalDia = (int)  totalHora / 24;
+        int totalHoraNuevoDia = (int) totalHora % 24;
 
 
-        if(totalHour < 9){
-            if((totalMinute >= 10) && (totalHour == 0)){
-                value = 1000;
+        if(totalHora < 9){
+            if((totalMinutos >= 10) && (totalHora == 0)){
+            	total = 1000;
             }else{
-                value = totalHour * 1000;
+            	total = totalHora * 1000;
             }
-        }else if(totalHourNewDay == 0 || (totalHourNewDay >= 9 && totalHourNewDay < 24)){
-            value = (8000 * (totalDay == 0 ? 1:totalDay));
+        }else if(totalHoraNuevoDia == 0 || (totalHoraNuevoDia >= 9 && totalHoraNuevoDia < 24)){
+        	total = (8000 * (totalDia == 0 ? 1:totalDia));
         }else{
-            value = ((8000 * totalDay) + (totalHourNewDay * 1000));
+        	total = ((8000 * totalDia) + (totalHoraNuevoDia * 1000));
         }
         
-        registry.setTotal(value);
+        parqueadero.setTotal(total);
     }
 }
