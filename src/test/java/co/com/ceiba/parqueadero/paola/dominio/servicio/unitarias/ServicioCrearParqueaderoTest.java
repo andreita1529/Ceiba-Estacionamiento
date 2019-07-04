@@ -13,6 +13,7 @@ import org.junit.Test;
 import co.com.ceiba.parqueadero.paola.dominio.constantes.Constantes;
 import co.com.ceiba.parqueadero.paola.dominio.excepcion.ExcepcionLetraPlaca;
 import co.com.ceiba.parqueadero.paola.dominio.excepcion.ExcepcionNoCupo;
+import co.com.ceiba.parqueadero.paola.dominio.excepcion.ExcepcionNoExisteVehiculo;
 import co.com.ceiba.parqueadero.paola.dominio.excepcion.ExcepcionRegistroDuplicado;
 import co.com.ceiba.parqueadero.paola.dominio.modelo.Parqueadero;
 import co.com.ceiba.parqueadero.paola.dominio.puerto.repositorio.IParqueaderoRepositorio;
@@ -154,6 +155,26 @@ public class ServicioCrearParqueaderoTest {
         }catch (ExcepcionRegistroDuplicado e){
             // Assert
             assertEquals(Constantes.VEHICULO_YA_EXISTE_EN_PARQUEADERO, e.getMessage());
+        }
+    }
+	
+	@Test
+    public void validarNoExisteCarro(){
+        //Arrange
+        ParqueaderoTestDataBuilder parqueaderoDataBuilder = new ParqueaderoTestDataBuilder()
+                .tipoVehiculo(Constantes.TIPO_VEHICULO_CARRO);
+        
+        Parqueadero parqueadero = parqueaderoDataBuilder.build();
+
+        CrearVehiculoParqueaderoServicio crearServicio = new CrearVehiculoParqueaderoServicio(parqueaderoRepositorio);
+        when(parqueaderoRepositorio.crearVehiculo(parqueadero)).thenReturn(null);
+        //Act
+
+        try {
+        	crearServicio.crear(parqueadero);
+        }catch (ExcepcionNoExisteVehiculo e){
+            // Assert
+            assertEquals(Constantes.VEHICULO_NO_EXISTE_EN_PARQUEADERO, e.getMessage());
         }
     }
 
