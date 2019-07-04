@@ -36,7 +36,7 @@ public class ParqueaderoControlador {
     }
 	
 	@RequestMapping(method= RequestMethod.GET)
-    public List<Parqueadero> ListaVehiculos() {
+    public List<Parqueadero> listaVehiculos() {
         return this.listaVehiculoHandler.listaVehiculos();
     }
 

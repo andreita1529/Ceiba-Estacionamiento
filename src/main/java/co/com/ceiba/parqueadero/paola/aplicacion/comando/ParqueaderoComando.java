@@ -13,7 +13,6 @@ public class ParqueaderoComando implements Serializable{
 	private String cilindraje;
 	private Date fechaIngreso;
 	private Date fechaSalida;
-	private boolean estado;
 	private double total;
 	
 	public ParqueaderoComando() {
@@ -21,14 +20,13 @@ public class ParqueaderoComando implements Serializable{
 	}
 	
 	public ParqueaderoComando(Long id, String placa, String tipoVehiculo, String cilindraje, Date fechaIngreso,
-			Date fechaSalida, boolean estado, double total) {
+			Date fechaSalida, double total) {
 		this.id = id;
 		this.placa = placa;
 		this.tipoVehiculo = tipoVehiculo;
 		this.cilindraje = cilindraje;
 		this.fechaIngreso = fechaIngreso;
 		this.fechaSalida = fechaSalida;
-		this.estado = estado;
 		this.total = total;
 	}
 	
@@ -67,12 +65,6 @@ public class ParqueaderoComando implements Serializable{
 	}
 	public void setFechaSalida(Date fechaSalida) {
 		this.fechaSalida = fechaSalida;
-	}
-	public boolean isEstado() {
-		return estado;
-	}
-	public void setEstado(boolean estado) {
-		this.estado = estado;
 	}
 	public double getTotal() {
 		return total;
