@@ -14,6 +14,9 @@ public class Parqueadero {
 	private Date fechaSalida;
 	private double total;
 	
+	public Parqueadero() {
+	}
+	
 	public Parqueadero(Long id, String placa, String tipoVehiculo, String cilindraje, Date fechaIngreso, Date fechaSalida, double total) {
 		ValidadorParqueadero.validarDatoObligatorio(placa, Constantes.MENSAJE_PLACA_NULA);
 		ValidadorParqueadero.validarDatoObligatorio(tipoVehiculo, Constantes.MENSAJE_TIPO_VEHICULO_NULO);
@@ -33,9 +36,6 @@ public class Parqueadero {
 		this.total = total;
 	}
 	
-	public Parqueadero() {
-	}
-
 	public Long getId() {
 		return id;
 	}
