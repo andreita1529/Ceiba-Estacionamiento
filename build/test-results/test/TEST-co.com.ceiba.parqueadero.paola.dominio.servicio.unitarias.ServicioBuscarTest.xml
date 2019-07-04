@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="co.com.ceiba.parqueadero.paola.dominio.servicio.unitarias.ServicioBuscarTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2019-07-04T20:19:19" hostname="PAOLA-ALVAREZ" time="0.005">
-  <properties/>
-  <testcase name="listarParqueadero" classname="co.com.ceiba.parqueadero.paola.dominio.servicio.unitarias.ServicioBuscarTest" time="0.002"/>
-  <testcase name="listarParqueaderoVacio" classname="co.com.ceiba.parqueadero.paola.dominio.servicio.unitarias.ServicioBuscarTest" time="0.002"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
