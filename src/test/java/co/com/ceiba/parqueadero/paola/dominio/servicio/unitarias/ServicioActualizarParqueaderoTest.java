@@ -280,5 +280,60 @@ public class ServicioActualizarParqueaderoTest {
         assertEquals((valueHour*2)+valueDay,parqueadero.getTotal(),0);
 
     }
+	
+	@Test
+    public void  validarHoraMotoCero() {
+        //Arrange
+        int hour = 0;
+        
+        Calendar fecha = Calendar.getInstance();
+        fecha.setTime(new Date());
+
+        fecha.set(Calendar.HOUR, fecha.get(Calendar.HOUR) - hour);
+
+        ParqueaderoTestDataBuilder parqueaderoDataBuilder = new ParqueaderoTestDataBuilder()
+        		.tipoVehiculo(Constantes.TIPO_VEHICULO_MOTO)
+        		.cilindraje("200")
+        		.fechaIngreso(fecha.getTime());
+
+        Parqueadero parqueadero = parqueaderoDataBuilder.build();
+
+        ActualizarSalidaVehiculoParqueaderoServicio salidaServicio = new ActualizarSalidaVehiculoParqueaderoServicio(parqueaderoRepositorio);
+        when(parqueaderoRepositorio.buscarPorPlaca(parqueadero.getPlaca())).thenReturn(parqueadero);
+
+        //Act
+        salidaServicio.actualizar(parqueadero.getPlaca());
+
+        //Assert
+        assertEquals(0 ,parqueadero.getTotal(),0);
+
+    }
+	
+	@Test
+    public void  validarHoraCarroCero() {
+        //Arrange
+        int hour = 0;
+        
+        Calendar fecha = Calendar.getInstance();
+        fecha.setTime(new Date());
+
+        fecha.set(Calendar.HOUR, fecha.get(Calendar.HOUR) - hour);
+
+        ParqueaderoTestDataBuilder parqueaderoDataBuilder = new ParqueaderoTestDataBuilder()
+        		.tipoVehiculo(Constantes.TIPO_VEHICULO_CARRO)
+        		.fechaIngreso(fecha.getTime());
+
+        Parqueadero parqueadero = parqueaderoDataBuilder.build();
+
+        ActualizarSalidaVehiculoParqueaderoServicio salidaServicio = new ActualizarSalidaVehiculoParqueaderoServicio(parqueaderoRepositorio);
+        when(parqueaderoRepositorio.buscarPorPlaca(parqueadero.getPlaca())).thenReturn(parqueadero);
+
+        //Act
+        salidaServicio.actualizar(parqueadero.getPlaca());
+
+        //Assert
+        assertEquals(0 ,parqueadero.getTotal(),0);
+
+    }
 
 }
