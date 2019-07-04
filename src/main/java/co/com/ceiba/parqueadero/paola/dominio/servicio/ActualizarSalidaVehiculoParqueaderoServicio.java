@@ -1,7 +1,6 @@
 package co.com.ceiba.parqueadero.paola.dominio.servicio;
 
 import java.util.Calendar;
-import java.util.concurrent.TimeUnit;
 
 import co.com.ceiba.parqueadero.paola.dominio.constantes.Constantes;
 import co.com.ceiba.parqueadero.paola.dominio.excepcion.ExcepcionNoExisteVehiculo;
@@ -20,9 +19,13 @@ public class ActualizarSalidaVehiculoParqueaderoServicio {
 	public double actualizar(String placa){
 		ValidadorParqueadero.validarDatoObligatorio(placa, Constantes.MENSAJE_PLACA_NULA);
 		Parqueadero parqueadero = validarRegistro(placa);
-		parqueadero.setEstado(false);
 		parqueadero.setFechaSalida(Calendar.getInstance().getTime());
-		parqueadero.setTotal(calcularPrecio(parqueadero));
+		if(parqueadero.getTipoVehiculo().equalsIgnoreCase(Constantes.TIPO_VEHICULO_MOTO)) {
+			calcularPrecioMoto(parqueadero);
+		}else if(parqueadero.getTipoVehiculo().equalsIgnoreCase(Constantes.TIPO_VEHICULO_CARRO)) {
+			calcularPrecioCarro(parqueadero);
+		}
+		
         this.parqueaderoRepositorio.crearVehiculo(parqueadero);
         return parqueadero.getTotal();
     }
@@ -35,34 +38,59 @@ public class ActualizarSalidaVehiculoParqueaderoServicio {
 		return parqueadero;
 	}
 	
-	private float calcularPrecio(Parqueadero parqueadero) {
-		float precio = 0;
-		long duracionParqueo = parqueadero.getFechaSalida().getTime() - parqueadero.getFechaIngreso().getTime();
-		long minutos = TimeUnit.MILLISECONDS.toMinutes(duracionParqueo);
-		duracionParqueo = TimeUnit.MILLISECONDS.toHours(duracionParqueo);
-		long dias = (duracionParqueo / 24);
-		long horasSobrantes = (duracionParqueo-(dias*24));
-		if(minutos%60 >0) {
-			horasSobrantes++;
-		}
-		if(horasSobrantes>=9) {
-			dias ++;
-			horasSobrantes=0;
-		}
-		if(horasSobrantes==0 && dias==0) {
-			horasSobrantes=1;
-		}
-		if (parqueadero.getTipoVehiculo().equalsIgnoreCase(Constantes.TIPO_VEHICULO_MOTO)) {
-			precio += dias * Constantes.VALOR_DIA_MOTO;
-			precio += horasSobrantes * Constantes.VALOR_HORA_MOTO;
-			if (Integer.parseInt(parqueadero.getCilindraje()) > 500) {
-				precio += Constantes.VALOR_ADICIONAL_TOPE_CILINDRAJE_MOTO;
-			}
-		}
-		if (parqueadero.getTipoVehiculo().equalsIgnoreCase(Constantes.TIPO_VEHICULO_CARRO)) {
-			precio += dias * Constantes.VALOR_DIA_CARRO;
-			precio += horasSobrantes * Constantes.VALOR_DIA_CARRO;
-		}
-		return precio;
-	}
+	public void calcularPrecioMoto(Parqueadero registry) {
+        long value;
+        double milisegund = (registry.getFechaSalida().getTime() - registry.getFechaIngreso().getTime());
+        double hour = (milisegund/3600000);
+        double minute = (milisegund/60000);
+        long totalHour = Math.round(hour);
+        long totalMinute = Math.round(minute);
+        int totalDay = (int)  totalHour / 24;
+        int  totalHourNewDay = (int) totalHour % 24;
+
+
+        if(totalHour < 9){
+            if((totalMinute >= 10) && (totalHour == 0)){
+                value = 500;
+            }else{
+                value = totalHour * 500;
+            }
+        }else if(totalHourNewDay == 0 || (totalHourNewDay >= 9 && totalHourNewDay < 24)){
+            value = (4000 * (totalDay == 0 ? 1:totalDay));
+        }else{
+            value = ((4000 * totalDay) + (totalHourNewDay * 500));
+        }
+        
+        if(Integer.valueOf(registry.getCilindraje()) > 500 ){
+            value = value + 2000;
+        }
+        
+        registry.setTotal(value);
+    }
+	
+	public void calcularPrecioCarro(Parqueadero registry) {
+        long value;
+        double milisegund = (registry.getFechaSalida().getTime() - registry.getFechaIngreso().getTime());
+        double hour = (milisegund/3600000);
+        double minute = (milisegund/60000);
+        long totalHour = Math.round(hour);
+        long totalMinute = Math.round(minute);
+        int totalDay = (int)  totalHour / 24;
+        int  totalHourNewDay = (int) totalHour % 24;
+
+
+        if(totalHour < 9){
+            if((totalMinute >= 10) && (totalHour == 0)){
+                value = 1000;
+            }else{
+                value = totalHour * 1000;
+            }
+        }else if(totalHourNewDay == 0 || (totalHourNewDay >= 9 && totalHourNewDay < 24)){
+            value = (8000 * (totalDay == 0 ? 1:totalDay));
+        }else{
+            value = ((8000 * totalDay) + (totalHourNewDay * 1000));
+        }
+        
+        registry.setTotal(value);
+    }
 }

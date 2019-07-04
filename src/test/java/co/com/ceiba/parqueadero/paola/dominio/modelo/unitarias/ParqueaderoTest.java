@@ -1,53 +1,57 @@
 package co.com.ceiba.parqueadero.paola.dominio.modelo.unitarias;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
-
 import org.junit.Test;
 
 import co.com.ceiba.parqueadero.paola.dominio.constantes.Constantes;
 import co.com.ceiba.parqueadero.paola.dominio.excepcion.ExcepcionObligatorio;
 import co.com.ceiba.parqueadero.paola.dominio.excepcion.ExcepcionTipoVehiculo;
-import co.com.ceiba.parqueadero.paola.dominio.modelo.ValidadorParqueadero;
+import co.com.ceiba.parqueadero.paola.dominio.testbase.TestBase;
+import co.com.ceiba.parqueadero.paola.testdatabuilder.ParqueaderoTestDataBuilder;
 
 public class ParqueaderoTest {
 	
 	@Test
-	public void validarPlacaObligatoria() {
-		
-		try {
-			// act
-			ValidadorParqueadero.validarDatoObligatorio(Constantes.VACIO,Constantes.MENSAJE_PLACA_NULA);
-			fail();
-		} catch (ExcepcionObligatorio e) {
-			// assert
-			assertEquals(e.getMessage(), Constantes.MENSAJE_PLACA_NULA);
-		}
-	}
-	
-	@Test
-	public void validarTipoVehiculoObligatorio() {
-		
-		try {
-			// act
-			ValidadorParqueadero.validarDatoObligatorio(null,Constantes.MENSAJE_TIPO_VEHICULO_NULO);
-			fail();
-		} catch (ExcepcionObligatorio e) {
-			// assert
-			assertEquals(e.getMessage(), Constantes.MENSAJE_TIPO_VEHICULO_NULO);
-		}
-	}
-	
-	@Test
-	public void validarTipoVehiculoDato() {
-		
-		try {
-			// act
-			ValidadorParqueadero.validarTipoVehiculo("CARR",Constantes.MENSAJE_TIPO_VEHICULO_INCORRECTO);
-			fail();
-		} catch (ExcepcionTipoVehiculo e) {
-			// assert
-			assertEquals(e.getMessage(), Constantes.MENSAJE_TIPO_VEHICULO_INCORRECTO);
-		}		
-	}
+    public void validarPlacaObligatoria() {
+        //Arrange
+        ParqueaderoTestDataBuilder parqueaderoTestDataBuilder = new ParqueaderoTestDataBuilder();
+
+        parqueaderoTestDataBuilder.placa(null);
+
+        //Act - Assert
+        TestBase.assertThrows(() -> parqueaderoTestDataBuilder.build(), ExcepcionObligatorio.class, Constantes.MENSAJE_PLACA_NULA);
+    }
+
+    @Test
+    public void validarTipoVehiculoObligatorio() {
+        //Arrange
+    	ParqueaderoTestDataBuilder parqueaderoTestDataBuilder = new ParqueaderoTestDataBuilder();
+
+    	parqueaderoTestDataBuilder.tipoVehiculo(null);
+
+        //Act - Assert
+        TestBase.assertThrows(() -> parqueaderoTestDataBuilder.build(), ExcepcionObligatorio.class, Constantes.MENSAJE_TIPO_VEHICULO_NULO);
+    }
+
+    @Test
+    public void validarTipoVehiculoIncorrecto() {
+        //Arrange
+    	ParqueaderoTestDataBuilder parqueaderoTestDataBuilder = new ParqueaderoTestDataBuilder();
+        String tipoVehiculo = "CARR";
+        parqueaderoTestDataBuilder.tipoVehiculo(tipoVehiculo);
+
+        //Act - Assert
+        TestBase.assertThrows(() -> parqueaderoTestDataBuilder.build(), ExcepcionTipoVehiculo.class,Constantes.MENSAJE_TIPO_VEHICULO_INCORRECTO);
+    }
+
+    @Test
+    public void validarCilindrajeObligatorio() {
+        //Arrange
+    	ParqueaderoTestDataBuilder parqueaderoTestDataBuilder = new ParqueaderoTestDataBuilder();
+
+    	parqueaderoTestDataBuilder.tipoVehiculo("MOTO");
+    	parqueaderoTestDataBuilder.cilindraje(null);
+
+        //Act - Assert
+        TestBase.assertThrows(() -> parqueaderoTestDataBuilder.build(), ExcepcionObligatorio.class,Constantes.MENSAJE_CILINDRAJE_NO_NULO);
+    }
 }

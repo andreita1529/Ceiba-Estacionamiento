@@ -12,7 +12,6 @@ public class Parqueadero {
 	private String cilindraje;
 	private Date fechaIngreso;
 	private Date fechaSalida;
-	private boolean estado;
 	private double total;
 	
 	public Parqueadero(Long id, String placa, String tipoVehiculo, String cilindraje, Date fechaIngreso, Date fechaSalida, double total) {
@@ -31,7 +30,6 @@ public class Parqueadero {
 		this.cilindraje = cilindraje;
 		this.fechaIngreso = fechaIngreso;
 		this.fechaSalida = fechaSalida;
-		this.setEstado(true);
 		this.total = total;
 	}
 	
@@ -84,14 +82,6 @@ public class Parqueadero {
 
 	public void setFechaSalida(Date fechaSalida) {
 		this.fechaSalida = fechaSalida;
-	}
-
-	public boolean isEstado() {
-		return estado;
-	}
-
-	public void setEstado(boolean estado) {
-		this.estado = estado;
 	}
 
 	public double getTotal() {

@@ -13,18 +13,16 @@ public class ParqueaderoTestDataBuilder {
 	private String cilindraje;
 	private Date fechaIngreso;
 	private Date fechaSalida;
-	private boolean estado;
 	private double total;
 	
 	
     public ParqueaderoTestDataBuilder(){
         this.id = 1L;
-        this.tipoVehiculo = Constantes.TIPO_VEHICULO_CARRO;
         this.placa = "DXR423";
-        this.cilindraje = "0";
-        this.fechaIngreso = null;
+        this.tipoVehiculo = Constantes.TIPO_VEHICULO_CARRO;        
+        this.cilindraje = null;
+        this.fechaIngreso = new  Date();
         this.fechaSalida = null;
-        this.estado = true;
         this.total = 0;
     }
 	
@@ -60,22 +58,9 @@ public class ParqueaderoTestDataBuilder {
     public ParqueaderoTestDataBuilder total(long total) {
         this.total = total;
         return this;
-    }    
-    public ParqueaderoTestDataBuilder estado(boolean estado) {
-        this.estado = estado;
-        return this;
-    }
+    }   
 
     public Parqueadero build(){
-    	Parqueadero parqueadero = new Parqueadero();
-    	parqueadero.setId(this.id);
-    	parqueadero.setPlaca(this.placa);
-    	parqueadero.setTipoVehiculo(this.tipoVehiculo);
-    	parqueadero.setCilindraje(this.cilindraje);
-    	parqueadero.setFechaIngreso(this.fechaIngreso);
-    	parqueadero.setFechaSalida(this.fechaSalida);
-    	parqueadero.setEstado(this.estado);
-    	parqueadero.setTotal(this.total);
-        return parqueadero;
+    	return new Parqueadero(id, placa, tipoVehiculo, cilindraje, fechaIngreso, fechaSalida, total);
     }
 }

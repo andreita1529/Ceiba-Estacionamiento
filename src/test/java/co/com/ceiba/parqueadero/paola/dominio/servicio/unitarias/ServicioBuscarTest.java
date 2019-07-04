@@ -18,11 +18,10 @@ public class ServicioBuscarTest {
 	private static final Date FECHA_INGRESO = Calendar.getInstance().getTime();
 
 	@Test
-	public void createTicketMoto() {
+	public void crearParqueaderoMoto() {
 		// arrange
 		this.parqueaderoDataBuilder = new ParqueaderoTestDataBuilder().placa(Constantes.PLACA_MOTO)
-				.tipoVehiculo(Constantes.TIPO_VEHICULO_MOTO).cilindraje("200").estado(true)
-				.fechaIngreso(FECHA_INGRESO);
+				.tipoVehiculo(Constantes.TIPO_VEHICULO_MOTO).cilindraje("200").fechaIngreso(FECHA_INGRESO);
 		// act
 		this.parqueadero = this.parqueaderoDataBuilder.build();
 		// assert
@@ -31,11 +30,10 @@ public class ServicioBuscarTest {
 
 	
 	@Test
-	public void createTicketCarro() {
+	public void crearParqueaderoCarro() {
 		// arrange
 		this.parqueaderoDataBuilder = new ParqueaderoTestDataBuilder().placa(Constantes.PLACA_CARRO)
-				.tipoVehiculo(Constantes.TIPO_VEHICULO_CARRO).estado(true)
-				.fechaIngreso(FECHA_INGRESO);
+				.tipoVehiculo(Constantes.TIPO_VEHICULO_CARRO).fechaIngreso(FECHA_INGRESO);
 		// act
 		this.parqueadero = this.parqueaderoDataBuilder.build();
 		// assert
