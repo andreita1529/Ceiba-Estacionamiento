@@ -22,7 +22,7 @@ public class ActualizarSalidaVehiculoParqueaderoServicio {
 		parqueadero.setFechaSalida(Calendar.getInstance().getTime());
 		if(parqueadero.getTipoVehiculo().equalsIgnoreCase(Constantes.TIPO_VEHICULO_MOTO)) {
 			calcularPrecioMoto(parqueadero);
-		}else if(parqueadero.getTipoVehiculo().equalsIgnoreCase(Constantes.TIPO_VEHICULO_CARRO)) {
+		}else{
 			calcularPrecioCarro(parqueadero);
 		}
 		
