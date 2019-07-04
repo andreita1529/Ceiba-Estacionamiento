@@ -13,18 +13,18 @@ import org.junit.Test;
 
 import co.com.ceiba.parqueadero.paola.dominio.constantes.Constantes;
 import co.com.ceiba.parqueadero.paola.dominio.modelo.Parqueadero;
-import co.com.ceiba.parqueadero.paola.dominio.puerto.repositorio.IParqueaderoRepositorio;
+import co.com.ceiba.parqueadero.paola.dominio.puerto.repositorio.ParqueaderoRepositorio;
 import co.com.ceiba.parqueadero.paola.dominio.servicio.BuscarVehiculoParqueaderoServicio;
 import co.com.ceiba.parqueadero.paola.testdatabuilder.ParqueaderoTestDataBuilder;
 
 public class ServicioBuscarTest {
 	
-	private IParqueaderoRepositorio parqueaderoRepositorio;
+	private ParqueaderoRepositorio parqueaderoRepositorio;
 
 	@Before
 	public void prepararDatos() {
 		// arrange
-		this.parqueaderoRepositorio = mock(IParqueaderoRepositorio.class);
+		this.parqueaderoRepositorio = mock(ParqueaderoRepositorio.class);
 	}
 
 	@Test

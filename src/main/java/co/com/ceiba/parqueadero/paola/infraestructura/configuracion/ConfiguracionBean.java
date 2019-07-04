@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import co.com.ceiba.parqueadero.paola.aplicacion.comando.manejador.EntradaVehiculoHandler;
 import co.com.ceiba.parqueadero.paola.aplicacion.comando.manejador.SalidaVehiculoHandler;
 import co.com.ceiba.parqueadero.paola.aplicacion.consulta.ListaVehiculoHandler;
-import co.com.ceiba.parqueadero.paola.dominio.puerto.repositorio.IParqueaderoRepositorio;
+import co.com.ceiba.parqueadero.paola.dominio.puerto.repositorio.ParqueaderoRepositorio;
 import co.com.ceiba.parqueadero.paola.dominio.servicio.*;
 
 @Configuration
@@ -18,7 +18,7 @@ public class ConfiguracionBean {
     }
 
     @Bean
-    public CrearVehiculoParqueaderoServicio crearServicio(IParqueaderoRepositorio parqueaderoRepositorio){
+    public CrearVehiculoParqueaderoServicio crearServicio(ParqueaderoRepositorio parqueaderoRepositorio){
         return new CrearVehiculoParqueaderoServicio(parqueaderoRepositorio);
     }
 
@@ -28,7 +28,7 @@ public class ConfiguracionBean {
     }
     
     @Bean
-    public  BuscarVehiculoParqueaderoServicio listaVehiculoServicio(IParqueaderoRepositorio parqueaderoRepositorio){
+    public  BuscarVehiculoParqueaderoServicio listaVehiculoServicio(ParqueaderoRepositorio parqueaderoRepositorio){
         return new BuscarVehiculoParqueaderoServicio(parqueaderoRepositorio);
     }
     
@@ -38,7 +38,7 @@ public class ConfiguracionBean {
     }
     
     @Bean
-    public ActualizarSalidaVehiculoParqueaderoServicio registerExitService(IParqueaderoRepositorio parqueaderoRepositorio){
+    public ActualizarSalidaVehiculoParqueaderoServicio registerExitService(ParqueaderoRepositorio parqueaderoRepositorio){
         return new ActualizarSalidaVehiculoParqueaderoServicio(parqueaderoRepositorio);
     }
     

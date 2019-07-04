@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 import co.com.ceiba.parqueadero.paola.dominio.modelo.Parqueadero;
-import co.com.ceiba.parqueadero.paola.infraestructura.entidad.ParqueaderoEntidad;
+import co.com.ceiba.parqueadero.paola.infraestructura.adaptador.entidad.ParqueaderoEntidad;
 
 @Component
 public class ParqueaderoMapeador {
@@ -19,7 +19,7 @@ public class ParqueaderoMapeador {
         }
         else{
             parqueadero = new Parqueadero(parqueaderoEntidad.getId(), parqueaderoEntidad.getPlaca(), parqueaderoEntidad.getTipoVehiculo()
-                    ,parqueaderoEntidad.getCilindraje(), parqueaderoEntidad.getFechaIngreso(), parqueaderoEntidad.getFechasalida()
+                    ,parqueaderoEntidad.getCilindraje(), parqueaderoEntidad.getFechaIngreso(), parqueaderoEntidad.getFechaSalida()
                     ,parqueaderoEntidad.getValorTotal());
         }
 
@@ -43,7 +43,7 @@ public class ParqueaderoMapeador {
 
         listaParqueaderoEntidad.forEach(parqueaderoEntidad -> listParqueadero.add(new Parqueadero(parqueaderoEntidad.getId()
                 ,parqueaderoEntidad.getPlaca(),parqueaderoEntidad.getTipoVehiculo()
-                ,parqueaderoEntidad.getCilindraje(),parqueaderoEntidad.getFechaIngreso(),parqueaderoEntidad.getFechasalida()
+                ,parqueaderoEntidad.getCilindraje(),parqueaderoEntidad.getFechaIngreso(),parqueaderoEntidad.getFechaSalida()
                 ,parqueaderoEntidad.getValorTotal())));
 
         return  listParqueadero;

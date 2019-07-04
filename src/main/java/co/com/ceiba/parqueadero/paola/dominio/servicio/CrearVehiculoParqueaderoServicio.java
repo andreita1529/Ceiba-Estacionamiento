@@ -6,13 +6,13 @@ import java.util.Date;
 import co.com.ceiba.parqueadero.paola.dominio.constantes.Constantes;
 import co.com.ceiba.parqueadero.paola.dominio.excepcion.*;
 import co.com.ceiba.parqueadero.paola.dominio.modelo.Parqueadero;
-import co.com.ceiba.parqueadero.paola.dominio.puerto.repositorio.IParqueaderoRepositorio;
+import co.com.ceiba.parqueadero.paola.dominio.puerto.repositorio.ParqueaderoRepositorio;
 
 public class CrearVehiculoParqueaderoServicio {
 
-	private IParqueaderoRepositorio parqueaderoRepositorio;
+	private ParqueaderoRepositorio parqueaderoRepositorio;
 	
-	public CrearVehiculoParqueaderoServicio(IParqueaderoRepositorio parqueaderoRepositorio){
+	public CrearVehiculoParqueaderoServicio(ParqueaderoRepositorio parqueaderoRepositorio){
         this.parqueaderoRepositorio = parqueaderoRepositorio;
     }
 	

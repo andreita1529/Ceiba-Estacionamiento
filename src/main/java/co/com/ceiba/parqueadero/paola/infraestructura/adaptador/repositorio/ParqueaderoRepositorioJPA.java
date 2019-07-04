@@ -1,4 +1,4 @@
-package co.com.ceiba.parqueadero.paola.infraestructura.repositorio;
+package co.com.ceiba.parqueadero.paola.infraestructura.adaptador.repositorio;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
-import co.com.ceiba.parqueadero.paola.infraestructura.entidad.ParqueaderoEntidad;
+import co.com.ceiba.parqueadero.paola.infraestructura.adaptador.entidad.ParqueaderoEntidad;
 
 public interface ParqueaderoRepositorioJPA extends CrudRepository<ParqueaderoEntidad, Integer>{
 	

@@ -5,18 +5,18 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import co.com.ceiba.parqueadero.paola.dominio.modelo.Parqueadero;
-import co.com.ceiba.parqueadero.paola.dominio.puerto.repositorio.IParqueaderoRepositorio;
-import co.com.ceiba.parqueadero.paola.infraestructura.entidad.ParqueaderoEntidad;
+import co.com.ceiba.parqueadero.paola.dominio.puerto.repositorio.ParqueaderoRepositorio;
+import co.com.ceiba.parqueadero.paola.infraestructura.adaptador.entidad.ParqueaderoEntidad;
 import co.com.ceiba.parqueadero.paola.infraestructura.mapeador.ParqueaderoMapeador;
-import co.com.ceiba.parqueadero.paola.infraestructura.repositorio.ParqueaderoRepositorioJPA;
+import co.com.ceiba.parqueadero.paola.infraestructura.adaptador.repositorio.ParqueaderoRepositorioJPA;
 
 @Repository
-public class ParqueaderoAdaptador implements IParqueaderoRepositorio{
+public class ParqueaderoRepositorioH2Adaptador implements ParqueaderoRepositorio{
 
 	private ParqueaderoRepositorioJPA parqueaderoRepositorioJPA;
 	private ParqueaderoMapeador mapeador;
 	
-	public ParqueaderoAdaptador(ParqueaderoRepositorioJPA parqueaderoRepositorioJPA, ParqueaderoMapeador mapeador){
+	public ParqueaderoRepositorioH2Adaptador(ParqueaderoRepositorioJPA parqueaderoRepositorioJPA, ParqueaderoMapeador mapeador){
         this.parqueaderoRepositorioJPA = parqueaderoRepositorioJPA;
         this.mapeador = mapeador;
     }

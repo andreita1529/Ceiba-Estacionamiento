@@ -4,7 +4,7 @@ import java.util.List;
 
 import co.com.ceiba.parqueadero.paola.dominio.modelo.Parqueadero;
 
-public interface IParqueaderoRepositorio {	
+public interface ParqueaderoRepositorio {	
 	
 	/**
      * Se registra el vehiculo en el parqueadero
