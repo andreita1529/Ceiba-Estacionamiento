@@ -1,5 +1,7 @@
 package co.com.ceiba.parqueadero.paola.infraestructura.controlador;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,8 +17,7 @@ import co.com.ceiba.parqueadero.paola.aplicacion.comando.manejador.EntradaVehicu
 import co.com.ceiba.parqueadero.paola.aplicacion.comando.manejador.SalidaVehiculoHandler;
 import co.com.ceiba.parqueadero.paola.aplicacion.consulta.ListaVehiculoHandler;
 import co.com.ceiba.parqueadero.paola.dominio.modelo.Parqueadero;
-
-import java.util.List;
+import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/parqueadero")
@@ -36,16 +37,19 @@ public class ParqueaderoControlador {
     }
 	
 	@RequestMapping(method= RequestMethod.GET)
+	@ApiOperation("listar")
     public List<Parqueadero> listaVehiculos() {
         return this.listaVehiculoHandler.listaVehiculos();
     }
 
     @PostMapping
+    @ApiOperation("crear")
     public void getEntrada(@RequestBody ParqueaderoComando parqueaderoComando) {
         this.entradaVehiculoHandler.crear(parqueaderoComando);
     }
 
     @PutMapping("/{placa}")
+    @ApiOperation("salida")
     public void getSalida(@PathVariable("placa") String placa) {
         this.salidaVehiculoHandler.actualizar(placa);
     }

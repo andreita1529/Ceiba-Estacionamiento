@@ -50,7 +50,7 @@ public class ActualizarSalidaVehiculoParqueaderoServicio {
 
 
         if(totalHour < 9){
-            if((totalMinute >= 10) && (totalHour == 0)){
+            if((totalMinute >= 2) && (totalHour == 0)){
                 value = 500;
             }else{
                 value = totalHour * 500;
@@ -80,7 +80,7 @@ public class ActualizarSalidaVehiculoParqueaderoServicio {
 
 
         if(totalHora < 9){
-            if((totalMinutos >= 10) && (totalHora == 0)){
+            if((totalMinutos >= 2) && (totalHora == 0)){
             	total = 1000;
             }else{
             	total = totalHora * 1000;

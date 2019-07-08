@@ -45,7 +45,7 @@ public class CrearVehiculoParqueaderoServicio {
 		Calendar fechaActual = Calendar.getInstance();
 		fechaActual.setTimeInMillis(fechaIngreso.getTime());
 		int day = fechaActual.get(Calendar.DAY_OF_WEEK);
-		if (placa.startsWith(Constantes.LETRA_INICIO_PLACA) && (day != Calendar.MONDAY || day != Calendar.SUNDAY)) {
+		if (placa.startsWith(Constantes.LETRA_INICIO_PLACA) || placa.startsWith("a") && (day != Calendar.MONDAY || day != Calendar.SUNDAY)) {
 			throw new ExcepcionLetraPlaca(Constantes.MENSAJE_ACCESO_NO_AUTORIZADO_PLACA);
 		}
     }
