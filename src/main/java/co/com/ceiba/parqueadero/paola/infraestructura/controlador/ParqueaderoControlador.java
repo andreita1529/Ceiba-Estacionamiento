@@ -20,8 +20,7 @@ import co.com.ceiba.parqueadero.paola.dominio.modelo.Parqueadero;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-@RequestMapping("/parqueadero")
-@CrossOrigin("*")
+@RequestMapping("/parqueadero") 
 public class ParqueaderoControlador {
 
 	private EntradaVehiculoHandler entradaVehiculoHandler;
